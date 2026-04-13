@@ -13,7 +13,13 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError("")
-        const ok = await handleLogin({ email, password })
+        const form = e.currentTarget
+        const formEmail = form.elements.email?.value ?? ""
+        const formPassword = form.elements.password?.value ?? ""
+        const ok = await handleLogin({
+            email: email || formEmail,
+            password: password || formPassword
+        })
         if (ok) navigate('/app')
         else setError("Login failed. Please check your credentials and try again.")
     }
@@ -34,11 +40,29 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" placeholder="you@example.com" />
+                        <input
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onInput={(e) => setEmail(e.target.value)}
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            autoComplete="email"
+                        />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" placeholder="Enter your password" />
+                        <input
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            onInput={(e) => setPassword(e.target.value)}
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autoComplete="current-password"
+                        />
                     </div>
                     {error && <p style={{ color: '#ff2d78', marginTop: '0.75rem' }}>{error}</p>}
                     <button className="button primary-button">Sign In</button>

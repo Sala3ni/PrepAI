@@ -14,7 +14,15 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError("")
-        const ok = await handleRegister({ username, email, password })
+        const form = e.currentTarget
+        const formUsername = form.elements.username?.value ?? ""
+        const formEmail = form.elements.email?.value ?? ""
+        const formPassword = form.elements.password?.value ?? ""
+        const ok = await handleRegister({
+            username: username || formUsername,
+            email: email || formEmail,
+            password: password || formPassword
+        })
         if (ok) navigate("/app")
         else setError("Signup failed. Please try again.")
     }
@@ -35,15 +43,42 @@ const Register = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="username">Username</label>
-                        <input onChange={(e) => setUsername(e.target.value)} type="text" id="username" placeholder="Choose a username" />
+                        <input
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            onInput={(e) => setUsername(e.target.value)}
+                            type="text"
+                            id="username"
+                            placeholder="Choose a username"
+                            autoComplete="username"
+                        />
                     </div>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" placeholder="you@example.com" />
+                        <input
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onInput={(e) => setEmail(e.target.value)}
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            autoComplete="email"
+                        />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" placeholder="Create a password" />
+                        <input
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            onInput={(e) => setPassword(e.target.value)}
+                            type="password"
+                            id="password"
+                            placeholder="Create a password"
+                            autoComplete="new-password"
+                        />
                     </div>
                     {error && <p style={{ color: '#ff2d78', marginTop: '0.75rem' }}>{error}</p>}
                     <button className="button primary-button">Create Account</button>
