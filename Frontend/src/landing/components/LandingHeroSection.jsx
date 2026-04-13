@@ -56,9 +56,9 @@ export default function LandingHeroSection({ onGetStarted }) {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto mt-28 flex max-w-5xl flex-col items-center space-y-12 px-4 text-center sm:px-6">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-4 pt-32 text-center sm:px-6 sm:pt-36">
         <motion.p
-          className="font-serif text-3xl leading-[1.1] text-white sm:text-5xl lg:text-[48px]"
+          className="font-serif text-2xl leading-[1.15] text-white sm:text-5xl lg:text-[48px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -67,7 +67,7 @@ export default function LandingHeroSection({ onGetStarted }) {
         </motion.p>
 
         <motion.h1
-          className="bg-linear-to-b from-white via-white to-[#b4c0ff] bg-clip-text font-body text-6xl font-semibold leading-[0.9] tracking-tighter text-transparent sm:text-8xl lg:text-[136px]"
+          className="mt-6 bg-linear-to-b from-white via-white to-[#b4c0ff] bg-clip-text font-body text-5xl font-semibold leading-[0.95] tracking-tighter text-transparent sm:text-8xl lg:text-[136px]"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
@@ -76,7 +76,7 @@ export default function LandingHeroSection({ onGetStarted }) {
         </motion.h1>
 
         <motion.p
-          className="max-w-xl font-body text-lg leading-[1.65] text-white/70 sm:text-[20px]"
+          className="mt-6 max-w-xl font-body text-base leading-[1.7] text-white/70 sm:text-[20px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ delay: 0.4, duration: 0.6 }}
@@ -85,7 +85,7 @@ export default function LandingHeroSection({ onGetStarted }) {
         </motion.p>
 
         <motion.div
-          className="flex flex-col items-center gap-6 sm:flex-row"
+          className="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
