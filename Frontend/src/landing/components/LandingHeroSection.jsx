@@ -56,9 +56,9 @@ export default function LandingHeroSection({ onGetStarted }) {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-4 pt-32 text-center sm:px-6 sm:pt-36">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-4 pt-44 text-center sm:px-6 sm:pt-36">
         <motion.p
-          className="font-serif text-2xl leading-[1.15] text-white sm:text-5xl lg:text-[48px]"
+          className="font-serif text-xl leading-[1.2] text-white sm:text-5xl lg:text-[48px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -67,7 +67,7 @@ export default function LandingHeroSection({ onGetStarted }) {
         </motion.p>
 
         <motion.h1
-          className="mt-6 bg-linear-to-b from-white via-white to-[#b4c0ff] bg-clip-text font-body text-5xl font-semibold leading-[0.95] tracking-tighter text-transparent sm:text-8xl lg:text-[136px]"
+          className="mt-5 bg-linear-to-b from-white via-white to-[#b4c0ff] bg-clip-text font-body text-5xl font-semibold leading-[0.95] tracking-tighter text-transparent sm:mt-6 sm:text-8xl lg:text-[136px]"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}

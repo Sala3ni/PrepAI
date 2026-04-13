@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 function SunburstIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
       <circle cx="12" cy="12" r="3" fill="white" />
       {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
         <rect
@@ -45,16 +45,16 @@ export default function LandingNavbar({ authOpen, setAuthOpen }) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between bg-transparent px-6 py-4 font-body">
-        <div className="flex items-center gap-2">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between bg-transparent px-4 py-3 font-body sm:px-6 sm:py-4">
+        <div className="flex min-w-0 items-center gap-2">
           <SunburstIcon />
-          <span className="text-xl font-medium text-white sm:text-2xl">PrepAI</span>
+          <span className="truncate text-lg font-medium text-white sm:text-2xl">PrepAI</span>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-4">
           <Link
             to="/resources"
-            className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+            className="whitespace-nowrap text-xs font-medium text-white/80 transition-colors hover:text-white sm:text-sm"
           >
             Resources
           </Link>
@@ -62,7 +62,7 @@ export default function LandingNavbar({ authOpen, setAuthOpen }) {
             <button
               type="button"
               onClick={() => setAuthOpen((o) => !o)}
-              className="rounded-full bg-white px-7 py-3 text-base font-semibold text-black transition-transform hover:scale-[1.02]"
+              className="whitespace-nowrap rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition-transform hover:scale-[1.02] sm:px-7 sm:py-3 sm:text-base"
             >
               Get Started
             </button>
