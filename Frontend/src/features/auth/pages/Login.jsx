@@ -8,11 +8,14 @@ const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await handleLogin({ email, password })
-        navigate('/app')
+        setError("")
+        const ok = await handleLogin({ email, password })
+        if (ok) navigate('/app')
+        else setError("Login failed. Please check your credentials and try again.")
     }
 
     if (loading) return (<main><h1>Loading...</h1></main>)
@@ -37,6 +40,7 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" placeholder="Enter your password" />
                     </div>
+                    {error && <p style={{ color: '#ff2d78', marginTop: '0.75rem' }}>{error}</p>}
                     <button className="button primary-button">Sign In</button>
                 </form>
                 <p className="form-footer">Don't have an account? <Link to="/register">Create one</Link></p>

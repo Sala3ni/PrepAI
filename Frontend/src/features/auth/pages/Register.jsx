@@ -8,12 +8,15 @@ const Register = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
     const { loading, handleRegister } = useAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await handleRegister({ username, email, password })
-        navigate("/app")
+        setError("")
+        const ok = await handleRegister({ username, email, password })
+        if (ok) navigate("/app")
+        else setError("Signup failed. Please try again.")
     }
 
     if (loading) return (<main><h1>Loading...</h1></main>)
@@ -42,6 +45,7 @@ const Register = () => {
                         <label htmlFor="password">Password</label>
                         <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" placeholder="Create a password" />
                     </div>
+                    {error && <p style={{ color: '#ff2d78', marginTop: '0.75rem' }}>{error}</p>}
                     <button className="button primary-button">Create Account</button>
                 </form>
                 <p className="form-footer">Already have an account? <Link to="/login">Sign in</Link></p>
