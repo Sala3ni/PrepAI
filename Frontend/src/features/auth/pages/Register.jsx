@@ -1,57 +1,50 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
+import "../auth.form.scss"
 
 const Register = () => {
-
     const navigate = useNavigate()
-    const [ username, setUsername ] = useState("")
-    const [ email, setEmail ] = useState("")
-    const [ password, setPassword ] = useState("")
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const { loading, handleRegister } = useAuth()
 
-    const {loading,handleRegister} = useAuth()
-    
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await handleRegister({username,email,password})
-        navigate("/")
+        await handleRegister({ username, email, password })
+        navigate("/app")
     }
 
-    if(loading){
-        return (<main><h1>Loading.......</h1></main>)
-    }
+    if (loading) return (<main><h1>Loading...</h1></main>)
 
     return (
         <main>
             <div className="form-container">
-                <h1>Register</h1>
-
+                <div className="form-header">
+                    <div className="brand">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#ff2d78"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" /></svg>
+                        <span>PrepAI</span>
+                    </div>
+                    <h1>Create account</h1>
+                    <p>Start preparing smarter with AI</p>
+                </div>
                 <form onSubmit={handleSubmit}>
-
                     <div className="input-group">
                         <label htmlFor="username">Username</label>
-                        <input
-                            onChange={(e) => { setUsername(e.target.value) }}
-                            type="text" id="username" name='username' placeholder='Enter username' />
+                        <input onChange={(e) => setUsername(e.target.value)} type="text" id="username" placeholder="Choose a username" />
                     </div>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input
-                            onChange={(e) => { setEmail(e.target.value) }}
-                            type="email" id="email" name='email' placeholder='Enter email address' />
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" placeholder="you@example.com" />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input
-                            onChange={(e) => { setPassword(e.target.value) }}
-                            type="password" id="password" name='password' placeholder='Enter password' />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" placeholder="Create a password" />
                     </div>
-
-                    <button className='button primary-button' >Register</button>
-
+                    <button className="button primary-button">Create Account</button>
                 </form>
-
-                <p>Already have an account? <Link to={"/login"} >Login</Link> </p>
+                <p className="form-footer">Already have an account? <Link to="/login">Sign in</Link></p>
             </div>
         </main>
     )

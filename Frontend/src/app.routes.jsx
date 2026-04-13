@@ -4,9 +4,19 @@ import Register from "./features/auth/pages/Register";
 import Protected from "./features/auth/components/Protected";
 import Home from "./features/interview/pages/Home";
 import Interview from "./features/interview/pages/Interview";
+import LandingPage from "./landing/components/LandingPage";
+import ResourcesPage from "./landing/components/ResourcesPage";
 
 
 export const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <LandingPage />
+    },
+    {
+        path: "/resources",
+        element: <ResourcesPage />
+    },
     {
         path: "/login",
         element: <Login />
@@ -16,7 +26,7 @@ export const router = createBrowserRouter([
         element: <Register />
     },
     {
-        path: "/",
+        path: "/app",
         element: <Protected><Home /></Protected>
     },
     {
